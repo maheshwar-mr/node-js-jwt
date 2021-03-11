@@ -24,13 +24,8 @@ app.post('/api/posts', verifyToken, (req, res) => {
 
 app.post('/api/login', (req, res) => {
   // Mock user
-  const user = {
-    id: 1, 
-    username: 'abc',
-    email: 'abc@gmail.com'
-  }
 
-  jwt.sign({user}, 'secretkey', { expiresIn: '1m' }, (err, token) => {
+  jwt.sign({iss: 'admin-issuer'}, 'secretkey', { expiresIn: '5m' }, (err, token) => {
     res.json({
       token
     });
